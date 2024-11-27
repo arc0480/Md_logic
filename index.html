@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSVデータ表示テーブル</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      cursor: pointer;
+      background-color: #f9f9f9;
+    }
+    input {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSVデータ表示テーブル</h1>
+  <input type="text" id="searchInput" placeholder="検索キーワードを入力してください...">
+  <table id="dataTable">
+    <thead>
+      <tr id="tableHeader"></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // CSVファイルを取得してテーブルを作成
+    fetch('data.csv')
+      .then(response => response.text())
+      .then(csvData => {
+        const rows = csvData.split("\n").map(row => row.split(","));
+        createTable(rows);
+      });
+
+    // テーブルを動的に生成
+    function createTable(data) {
+      const headerRow = data[0];
+      const tableHeader = document.getElementById("tableHeader");
+      const tableBody = document.querySelector("#dataTable tbody");
+
+      // ヘッダーを作成
+      headerRow.forEach((header, index) => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        th.onclick = () => sortTable(index);
+        tableHeader.appendChild(th);
+      });
+
+      // 行を作成
+      data.slice(1).forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
+      });
+    }
+
+    // 検索機能
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll("#dataTable tbody tr");
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+        row.style.display = match ? "" : "none";
+      });
+    });
+
+    // ソート機能
+    function sortTable(columnIndex) {
+      const table = document.getElementById("dataTable");
+      const rows = Array.from(table.rows).slice(1); // ヘッダーを除く
+      const isNumeric = !isNaN(rows[0].cells[columnIndex].textContent.trim());
+
+      rows.sort((rowA, rowB) => {
+        const cellA = rowA.cells[columnIndex].textContent.trim();
+        const cellB = rowB.cells[columnIndex].textContent.trim();
+
+        return isNumeric
+          ? Number(cellA) - Number(cellB)
+          : cellA.localeCompare(cellB, "ja");
+      });
+
+      // ソート結果をテーブルに反映
+      rows.forEach(row => table.tBodies[0].appendChild(row));
+    }
+  </script>
+</body>
+</html>
