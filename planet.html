@@ -10,7 +10,60 @@
   <a href="index.html">ホームページへ</a><br>
   <h1>planetページへようこそ</h1><br>
 
-  <h2>generator</h2>
+  <!-- CSVファイル選択 -->
+<input type="file" id="csvFile" accept=".csv" />
+<br><br>
+
+<!-- CSVデータが表示されるテーブル -->
+<table id="csvTable" border="1">
+    <thead></thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    // CSVファイルを非同期で読み込み、テーブルを生成する関数
+    function loadCSV(url) {
+        fetch(url)  // CSVファイルを取得
+            .then(response => response.text())  // テキストとして読み込む
+            .then(csvData => generateTable(csvData))  // データをテーブルに変換
+            .catch(error => console.error('CSV読み込みエラー:', error));  // エラーハンドリング
+    }
+
+    // CSVデータからHTMLテーブルを生成する関数
+    function generateTable(csvData) {
+        const rows = csvData.split('\n'); // 改行で分割
+        const tableHead = document.querySelector('#csvTable thead');
+        const tableBody = document.querySelector('#csvTable tbody');
+
+        tableHead.innerHTML = ''; // 既存のテーブルヘッダーをクリア
+        tableBody.innerHTML = ''; // 既存のテーブルボディをクリア
+
+        // 最初の行はヘッダーとして処理
+        const headers = rows[0].split(','); // カンマで分割
+        let headerRow = '<tr>';
+        headers.forEach(header => {
+            headerRow += `<th>${header.trim()}</th>`;
+        });
+        headerRow += '</tr>';
+        tableHead.innerHTML = headerRow;
+
+        // 残りの行をテーブルボディとして処理
+        for (let i = 1; i < rows.length; i++) {
+            const columns = rows[i].split(',');
+            if (columns.length > 1) { // 空行をスキップ
+                let row = '<tr>';
+                columns.forEach(col => {
+                    row += `<td>${col.trim()}</td>`;
+                });
+                row += '</tr>';
+                tableBody.innerHTML += row;
+            }
+        }
+    }
+
+    // CSVファイルを読み込んでテーブルを生成（CSVファイルのURLを指定）
+    loadCSV('planet.csv');
+</script>
 
 </body>
 </html>
