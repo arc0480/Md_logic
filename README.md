@@ -1,3 +1,4 @@
+ゲーム「mindustry」のガイドを作成しています。<br>
 下記のサイトを参照ください<br>
 https://arc0480.github.io/Mindustry_Guide<br>
 
