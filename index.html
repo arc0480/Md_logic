@@ -1,64 +1,72 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width~device-width, initial_scale=1.0">
-  
-  <!-- CSSファイルをリンク -->
-  <link rel="stylesheet" href="styles.css"> 
-  
-  <title>ホームページ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>サイドバー付きサイト</title>
+
+    <!-- 外部CSSファイルをリンク -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- アイコンの設定（必要に応じて） -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-
-  <!-- パンくずリストを生成：S 
-  <body data-breadcrumb="ホーム > about > 現在のページ　"
-    <nav aria-lavel="breadcrumb">
-      <ul id="breadcrumb"></ul> 
-    </nav>
-  </body>
-  -->
-  <!-- パンくずリストを生成：E -->
-  
 <body>
-  
 
+    <!-- ヘッダー -->
     <header>
-      <nav>
-          <ul>
+        <div class="logo">
+            <a href="#">サイトのロゴ</a>
+        </div>
+        <nav>
+            <ul>
               <li><a href="#">テスト</a></li>
               <li><a href="#">テスト</a></li>
               <li><a href="#">テスト</a></li>
-          </ul>
-      </nav>
+            </ul>
+        </nav>
     </header>
-    <div class="sidebar">
-        <ul>
-          <h1>ページリンク</h1>
-          <li> <a href="koryaku.html">攻略ページへ</a></li>
-          <li> <a href="logic.html">ロジックページへ</a></li>
-          <li> <a href="mod.html">MODページへ</a></li>
-          <li> <a href="memo.html">memoページへ</a></li>
-        </ul>
-    </div>
- 
-  <main>
-      <section class="hero">
-        <h1>ウェルカムメッセージ</h1>
-        <p>ここにウェブサイトの紹介文を追加します。</p>
-       <!-- <a href="#" class="cta-button">詳細を見る</a> -->
-      </section>
-      
-      <section class="content">
-        <h2>サブタイトル</h2>
-        <p>ここにコンテンツの詳細を追加します。</p>
-      </section>
-  
-  </main>
 
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <!-- サイドバー -->
+        <aside class="sidebar">
+            <h3>サイドバー</h3>
+            <ul>
+                <li> <a href="koryaku.html">攻略ページへ</a></li>
+          		<li> <a href="logic.html">ロジックページへ</a></li>
+          		<li> <a href="mod.html">MODページへ</a></li>
+          		<li> <a href="memo.html">memoページへ</a></li>
+            </ul>
+        </aside>
+
+        <!-- コンテンツエリア -->
+        <main class="main-content">
+            <section class="hero">
+                <h1>ウェルカムメッセージ</h1>
+                <p>ここにウェブサイトの紹介文を追加します。</p>
+                <a href="#" class="cta-button">詳細を見る</a>
+            </section>
+
+            <section class="content">
+                <h2>サブタイトル</h2>
+                <p>ここにコンテンツの詳細を追加します。</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- フッター -->
     <footer>
         <p>&copy; 2024 Mindustry_Guide</p>
+        <ul>
+            <li><a href="#">プライバシーポリシー</a></li>
+            <li><a href="#">利用規約</a></li>
+        </ul>
     </footer>
- 
+
 </body>
+
 </html>
