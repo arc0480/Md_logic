@@ -51,9 +51,11 @@ main .content {
 }
 
 main .sidebar {
-    width: 150px;
+    width: 300px;
     background-color: #f8f8f8;
-    padding: 10px;
+    padding: 20px; /* 内側の余白 */
+    border: 2px solid #333; /* 2pxの枠線、色は黒 */
+    border-radius: 8px; /* 角を丸める */
 }
 
 .content h2 {
