@@ -5,6 +5,25 @@
     box-sizing: border-box;
 }
 
+/* リンクに四角の枠を追加 */
+a {
+    text-decoration: none; /* 下線を削除 */
+    padding: 10px 20px; /* 内側の余白を追加 */
+    border: 2px solid #333; /* 2pxの枠線、色は黒 */
+    border-radius: 5px; /* 角を丸める */
+    color: #333; /* 文字色 */
+    transition: background-color 0.3s, color 0.3s; /* ホバー時に色が変わるアニメーション */
+}
+
+a:hover {
+    background-color: #333; /* ホバー時に背景色を変更 */
+    color: white; /* ホバー時に文字色を白に変更 */
+}
+
+
+
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
