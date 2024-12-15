@@ -68,9 +68,9 @@ main .content {
 }
 
 main .sidebar {
-    width: 300px;
+    width: 150px;
     background-color: #f8f8f8;
-    padding: 20px;
+    padding: 10px;
 }
 
 .content h2 {
