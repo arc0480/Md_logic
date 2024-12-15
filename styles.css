@@ -59,6 +59,18 @@ main .sidebar {
     border-radius: 8px; /* 角を丸める */
 }
 
+/* リンクのスタイル */
+.sidebar ul li a {
+    text-decoration: none; /* リンクの下線を削除 */
+    display: block; /* リストアイテム全体をクリックできるようにする */
+    padding: 10px 20px; /* 内側の余白 */
+    margin-bottom: 10px; /* 各リンク間の余白 */
+    border: 2px solid #333; /* 2pxの枠線 */
+    border-radius: 5px; /* 角を少し丸める */
+    color: #333; /* リンク文字の色 */
+    transition: background-color 0.3s, color 0.3s; /* ホバー時に色が変わるアニメーション */
+}
+
 /* サイドバーのタイトルスタイル */
 .sidebar h3 {
     font-size: 1.8em;
