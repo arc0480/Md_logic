@@ -50,6 +50,7 @@ main .content {
 
 }
 
+/* サイドバーに四角の枠を追加 */
 main .sidebar {
     width: 300px;
     background-color: #f8f8f8;
@@ -57,6 +58,21 @@ main .sidebar {
     border: 2px solid #333; /* 2pxの枠線、色は黒 */
     border-radius: 8px; /* 角を丸める */
 }
+
+/* サイドバーのタイトルスタイル */
+.sidebar h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+/* サイドバーの内容 */
+.sidebar p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+
+
 
 .content h2 {
 
